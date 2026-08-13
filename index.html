@@ -426,6 +426,11 @@
         .btt.show{opacity:1;transform:translateY(0)}
         .btt:hover{background:var(--cr);color:#fff;border-color:var(--cr);transform:translateY(-2px)}
         .btt svg{width:16px;height:16px}
+        .toasts{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);z-index:99000;display:flex;flex-direction:column;gap:10px;align-items:center;pointer-events:none;width:max-content}
+        .toast{display:flex;align-items:center;gap:10px;padding:12px 22px;border-radius:50px;background:rgba(13,13,20,.92);border:1px solid rgba(220,20,60,.35);color:#fff;font-size:13px;font-weight:500;letter-spacing:.3px;box-shadow:0 10px 34px rgba(0,0,0,.45);backdrop-filter:blur(12px);opacity:0;transform:translateY(16px) scale(.96);transition:all .4s cubic-bezier(.16,1,.3,1)}
+        .toast.show{opacity:1;transform:translateY(0) scale(1)}
+        .toast svg{width:16px;height:16px;color:#2ecc71;flex-shrink:0}
+        @media(max-width:768px){.toasts{bottom:100px}}
 
         .rv{opacity:0;transform:translateY(35px);transition:all .7s cubic-bezier(.4,0,.2,1)}
         .rv.vis{opacity:1;transform:translateY(0)}
@@ -479,7 +484,7 @@
             <div class="agate-sub">Este portfolio es privado.<br>Ingresá la contraseña para verlo.</div>
             <div class="agate-field">
                 <svg viewBox="0 0 24 24"><path d="M12 17a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/><path d="M2.06 12.35a1 1 0 0 1 0-.7C4.03 7.82 7.85 5 12 5c4.15 0 7.97 2.82 9.94 6.65a1 1 0 0 1 0 .7C19.97 16.18 16.15 19 12 19c-4.15 0-7.97-2.82-9.94-6.65z"/></svg>
-                <input type="password" id="agatePass" placeholder="Contraseña" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="go">
+                <input type="password" id="agatePass" placeholder="Contraseña" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="go" aria-label="Contraseña de acceso">
             </div>
             <button class="agate-btn" id="agateBtn">Entrar</button>
             <div class="agate-err" id="agateErr">Contraseña incorrecta</div>
@@ -501,7 +506,7 @@
 </div>
 
 <label class="vid-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="23 7 16 12 23 17"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg><span class="vt">Video</span><span class="vn" id="vname"></span><input type="file" accept="video/*" id="vidInput"></label>
-<div class="vid-ctrls" id="vidCtrls"><button class="vcb" id="vidDel">✕</button><button class="vcb" id="vidOp">○</button></div>
+<div class="vid-ctrls" id="vidCtrls"><button class="vcb" id="vidDel" aria-label="Quitar video">✕</button><button class="vcb" id="vidOp" aria-label="Ajustar opacidad del video">○</button></div>
 
 <!-- LOGO BUTTON - fixed top left -->
 <a href="#hero" class="logo-btn" id="logoBtn">Uxfolio<span class="ldot"></span></a>
@@ -531,7 +536,7 @@
 
 <!-- RADIAL MENU - Bottom Right - Quarter Circle -->
 <div class="radial-wrap" id="radialWrap">
-    <button class="ham" id="hamBtn"><span></span><span></span><span></span></button>
+    <button class="ham" id="hamBtn" aria-label="Abrir menú"><span></span><span></span><span></span></button>
     <button class="ri r1" id="quizBtn"><span class="rl">Test de Diseño</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></button>
     <a class="ri r2" href="#"><span class="rl">Descargar CV</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
     <button class="ri r3" id="shareBtn"><span class="rl">Compartir</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button>
@@ -540,9 +545,9 @@
 </div>
 
 <!-- QUIZ MODAL -->
-<div class="modal-overlay" id="quizModal">
-    <div class="glass modal"><div class="glass-inner">
-        <button class="modal-close" id="quizClose">✕</button>
+<div class="modal-overlay" id="quizModal" role="dialog" aria-modal="true" aria-label="Test de Diseño">
+        <div class="modal-box">
+            <button class="modal-close" id="quizClose" aria-label="Cerrar">✕</button>
         <h2 class="shimmer-r">Test de Diseño</h2>
         <p>Descubrí qué tipo de diseño se adapta mejor a tu proyecto.</p>
         <div class="quiz-progress"><div class="quiz-bar" id="quizBar" style="width:25%"></div></div>
@@ -557,14 +562,14 @@
 </div>
 
 <!-- PROJECT MODAL -->
-<div class="vmodal" id="vmodal">
+<div class="vmodal" id="vmodal" role="dialog" aria-modal="true" aria-label="Detalle del proyecto">
     <div class="vmodal-box">
         <div class="vmodal-head">
             <div>
                 <div class="vmodal-title" id="vmTitle">Proyecto</div>
                 <div class="vmodal-sub" id="vmSub">Trabajo</div>
             </div>
-            <button class="vmodal-close" id="vmClose">✕</button>
+            <button class="vmodal-close" id="vmClose" aria-label="Cerrar">✕</button>
         </div>
         <div class="vmodal-body" id="vmBody">
             <div class="pm-content">
@@ -753,11 +758,21 @@
 
 <button class="btt" id="btt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 
+<div class="toasts" id="toasts" aria-live="polite"></div>
 <script>
 const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
 const root=document.documentElement,page=$('#mainPage');
 
+// Toasts
+const toastBox=$('#toasts');
+function toast(msg){const t=document.createElement('div');t.className='toast';t.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg><span>${msg}</span>`;toastBox.appendChild(t);requestAnimationFrame(()=>requestAnimationFrame(()=>t.classList.add('show')));setTimeout(()=>{t.classList.remove('show');setTimeout(()=>t.remove(),450)},2600)}
+
+// Preloader (con fallback de seguridad por si 'load' tarda)
 window.addEventListener('load',()=>setTimeout(()=>$('#preloader').classList.add('done'),500));
+setTimeout(()=>{$('#preloader')?.classList.add('done')},3500);
+
+// Form
+$('#cform').addEventListener('submit',e=>{e.preventDefault();const b=$('#sendBtn'),o=b.innerHTML;b.innerHTML='✓ Enviado';b.style.background='linear-gradient(135deg,#2ecc71,#27ae60)';b.disabled=true;toast('¡Mensaje enviado! Te respondo pronto.');setTimeout(()=>{b.innerHTML=o;b.style.background='';b.disabled=false;$('#cform').reset()},2500)});
 
 // Scroll
 page.addEventListener('scroll',()=>{
@@ -797,7 +812,6 @@ const glow=$('#cursorGlow');
 if(!('ontouchstart' in window)){let mx=0,my=0,gx=0,gy=0;document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});(function mg(){gx+=(mx-gx)*.07;gy+=(my-gy)*.07;glow.style.left=gx+'px';glow.style.top=gy+'px';requestAnimationFrame(mg)})()}else glow.style.display='none';
 
 // Form
-$('#cform').addEventListener('submit',e=>{e.preventDefault();const b=$('#sendBtn'),o=b.innerHTML;b.innerHTML='✓ Enviado';b.style.background='linear-gradient(135deg,#2ecc71,#27ae60)';b.disabled=true;setTimeout(()=>{b.innerHTML=o;b.style.background='';b.disabled=false;$('#cform').reset()},2500)});
 
 $$('.page a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){const h=this.getAttribute('href');if(h==='#')return;e.preventDefault();$(h)?.scrollIntoView({behavior:'smooth'})}));
 
@@ -806,7 +820,7 @@ if(localStorage.getItem('theme')==='dark')root.setAttribute('data-theme','dark')
 $('#themeBtn').addEventListener('click',e=>{e.stopPropagation();const d=root.getAttribute('data-theme')==='dark';d?root.removeAttribute('data-theme'):root.setAttribute('data-theme','dark');localStorage.setItem('theme',d?'light':'dark')});
 
 // Share
-$('#shareBtn').addEventListener('click',e=>{e.stopPropagation();navigator.share?.({title:'Uxfolio',url:location.href}).catch(()=>{navigator.clipboard.writeText(location.href);alert('¡Link copiado!')})});
+$('#shareBtn').addEventListener('click',e=>{e.stopPropagation();const doCopy=()=>{navigator.clipboard?.writeText(location.href).then(()=>toast('¡Link copiado!')).catch(()=>toast('No se pudo copiar'))};if(navigator.share){navigator.share({title:'Uxfolio',url:location.href}).catch(()=>doCopy())}else{doCopy()}});
 
 // Contact radial
 $('#contactRadial').addEventListener('click',e=>{e.stopPropagation();setM(false);setTimeout(()=>$('#contact').scrollIntoView({behavior:'smooth'}),300)});
@@ -915,5 +929,6 @@ function genRes(){
     }
 })();
 </script>
+
 </body>
 </html>
