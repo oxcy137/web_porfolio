@@ -307,18 +307,14 @@
         .pprev::after{content:'';position:absolute;bottom:0;left:0;right:0;height:50px;background:linear-gradient(180deg,transparent,var(--g2))}
         .pnum{font-family:'Playfair Display',serif;font-size:84px;font-weight:800;color:rgba(220,20,60,.08);transition:all .5s;position:relative;z-index:1}
         .pcard:hover .pnum{color:rgba(220,20,60,.14);transform:scale(1.06)}
-        .pthumb{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity .5s}
-        .pcard.has-thumb .pthumb{opacity:.95}
-        .pcard.has-thumb .pnum{opacity:0}
-        .pplay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:3;background:rgba(255,255,255,.35);opacity:0;transition:all .35s;backdrop-filter:blur(3px)}
+        .pthumb{position:absolute;inset:0;background-size:cover;background-position:center;opacity:1;transition:opacity .5s}
+        .pplay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:3;background:rgba(8,8,14,.25);opacity:0;transition:all .35s;backdrop-filter:blur(3px)}
         .pcard:hover .pplay{opacity:1}
         .pplay-btn{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--cr),var(--crd));display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(220,20,60,.4);transform:scale(.85);transition:all .4s cubic-bezier(.175,.885,.32,1.275)}
         .pcard:hover .pplay-btn{transform:scale(1)}
-        .pplay-btn svg{width:20px;height:20px;color:#fff;margin-left:2px}
+        .pplay-btn svg{width:20px;height:20px;color:#fff}
         .ptags{position:absolute;top:14px;left:14px;display:flex;gap:5px;z-index:2}
         .ptag{padding:4px 10px;border-radius:50px;background:var(--g1);backdrop-filter:blur(8px);font-size:10px;font-weight:600;color:var(--cr);border:1px solid var(--b2)}
-        .pvid-badge{position:absolute;bottom:14px;right:14px;z-index:2;display:none;align-items:center;gap:5px;padding:5px 11px;border-radius:50px;background:rgba(220,20,60,.9);color:#fff;font-size:10px;font-weight:600;letter-spacing:.5px;backdrop-filter:blur(8px)}
-        .pcard.has-video .pvid-badge{display:flex}
         .pbody{padding:26px 28px 28px}
         .pcat{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--cr);margin-bottom:8px}
         .ptitle{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;margin-bottom:8px;color:var(--t1);transition:color .6s}
@@ -329,12 +325,7 @@
         .plink{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--cr);text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:gap .3s}
         .plink:hover{gap:11px}
         .plink svg{width:13px;height:13px}
-        .pv-upload{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--t3);background:var(--g2);border:1px solid var(--b2);padding:7px 13px;border-radius:50px;cursor:pointer;transition:all .3s}
-        .pv-upload:hover{color:var(--cr);border-color:rgba(220,20,60,.25);background:rgba(220,20,60,.05)}
-        .pv-upload svg{width:12px;height:12px}
-        .pv-upload.done{color:#fff;background:linear-gradient(135deg,var(--cr),var(--crd));border-color:var(--cr)}
-
-        /* ═══ VIDEO MODAL (DEMO) ═══ */
+        /* ═══ PROJECT MODAL ═══ */
         .vmodal{position:fixed;inset:0;z-index:8500;background:rgba(8,8,14,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all .4s;padding:24px}
         .vmodal.show{opacity:1;visibility:visible}
         .vmodal-box{max-width:980px;width:100%;max-height:88vh;display:flex;flex-direction:column;background:#0d0d14;border:1px solid rgba(255,255,255,.12);border-radius:24px;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.6);transform:scale(.94) translateY(14px);transition:all .45s cubic-bezier(.175,.885,.32,1.275)}
@@ -344,13 +335,16 @@
         .vmodal-sub{font-size:11px;color:rgba(255,255,255,.45);letter-spacing:1.5px;text-transform:uppercase;margin-top:2px}
         .vmodal-close{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;font-size:16px;transition:all .3s;flex-shrink:0}
         .vmodal-close:hover{background:var(--cr);border-color:var(--cr);transform:rotate(90deg)}
-        .vmodal-body{position:relative;background:#000;aspect-ratio:16/9}
-        .vmodal-body video{width:100%;height:100%;object-fit:contain}
-        .vmodal-empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:30px}
-        .vmodal-empty svg{width:52px;height:52px;color:rgba(255,255,255,.25)}
-        .vmodal-empty p{font-size:14px;color:rgba(255,255,255,.55);max-width:340px;line-height:1.6;font-weight:300}
-        .vmodal-empty button{padding:13px 26px;border-radius:50px;background:linear-gradient(135deg,var(--cr),var(--crd));color:#fff;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border:none;transition:all .3s;box-shadow:0 6px 24px rgba(220,20,60,.4)}
-        .vmodal-empty button:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(220,20,60,.5)}
+        .vmodal-body{position:relative;background:transparent;max-height:62vh;overflow-y:auto}
+        .pm-content{padding:30px 34px 34px;display:flex;flex-direction:column;gap:20px}
+        .pm-desc{font-size:14px;color:rgba(255,255,255,.62);line-height:1.75;font-weight:300}
+        .pm-tech{display:flex;flex-wrap:wrap;gap:8px}
+        .pm-tech span{padding:6px 13px;border-radius:50px;background:rgba(220,20,60,.12);border:1px solid rgba(220,20,60,.25);color:#fff;font-size:11px;font-weight:600;letter-spacing:.3px}
+        .pm-link{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px 28px;border-radius:50px;background:linear-gradient(135deg,var(--cr),var(--crd));color:#fff;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:all .3s;box-shadow:0 8px 28px rgba(220,20,60,.4)}
+        .pm-link:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(220,20,60,.5)}
+        .pm-link svg{width:15px;height:15px}
+        .pm-soon{display:none;align-items:center;gap:10px;padding:16px 18px;border-radius:14px;background:rgba(255,255,255,.05);border:1px dashed rgba(255,255,255,.18);font-size:13px;color:rgba(255,255,255,.55);line-height:1.5}
+        .pm-soon svg{width:18px;height:18px;color:rgba(255,255,255,.3);flex-shrink:0}
         .vmodal-foot{padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px;border-top:1px solid rgba(255,255,255,.08)}
         .vmodal-foot span{font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.5px;line-height:1.5}
         .vmodal-foot a{font-size:11px;color:rgba(255,255,255,.4);text-decoration:none;transition:color .3s;white-space:nowrap}
@@ -458,7 +452,7 @@
             <div class="agate-sub">Este portfolio es privado.<br>Ingresá la contraseña para verlo.</div>
             <div class="agate-field">
                 <svg viewBox="0 0 24 24"><path d="M12 17a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/><path d="M2.06 12.35a1 1 0 0 1 0-.7C4.03 7.82 7.85 5 12 5c4.15 0 7.97 2.82 9.94 6.65a1 1 0 0 1 0 .7C19.97 16.18 16.15 19 12 19c-4.15 0-7.97-2.82-9.94-6.65z"/></svg>
-                <input type="password" id="agatePass" placeholder="Contraseña" autocomplete="off" enterkeyhint="go">
+                <input type="password" id="agatePass" placeholder="Contraseña" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="go">
             </div>
             <button class="agate-btn" id="agateBtn">Entrar</button>
             <div class="agate-err" id="agateErr">Contraseña incorrecta</div>
@@ -535,27 +529,26 @@
     </div></div>
 </div>
 
-<!-- VIDEO DEMO MODAL -->
+<!-- PROJECT MODAL -->
 <div class="vmodal" id="vmodal">
     <div class="vmodal-box">
         <div class="vmodal-head">
             <div>
-                <div class="vmodal-title" id="vmTitle">Demo</div>
-                <div class="vmodal-sub" id="vmSub">Proyecto</div>
+                <div class="vmodal-title" id="vmTitle">Proyecto</div>
+                <div class="vmodal-sub" id="vmSub">Trabajo</div>
             </div>
             <button class="vmodal-close" id="vmClose">✕</button>
         </div>
         <div class="vmodal-body" id="vmBody">
-            <video id="vmVideo" controls playsinline></video>
-            <div class="vmodal-empty" id="vmEmpty">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><polygon points="23 7 16 12 23 17"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
-                <p>Este proyecto todavía no tiene video de demostración. Subí una grabación de la página funcionando — se guarda solo en tu dispositivo, sin links públicos.</p>
-                <button id="vmUpload">Adjuntar Demo</button>
+            <div class="pm-content">
+                <p class="pm-desc" id="pmDesc"></p>
+                <div class="pm-tech" id="pmTech"></div>
+                <a class="pm-link" id="pmLink" target="_blank" rel="noopener">Abrir proyecto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+                <div class="pm-soon" id="pmSoon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Este proyecto todavía no está publicado online. ¡Próximamente!</div>
             </div>
         </div>
         <div class="vmodal-foot">
-            <span>Los videos se guardan localmente. Sin links ni urls expuestas.</span>
-            <a href="#" id="vmHint" style="display:none"></a>
+            <span>Los proyectos publicados se abren en una pestaña nueva.</span>
         </div>
     </div>
 </div>
@@ -565,16 +558,15 @@
 
     <section id="about"><div class="agrid"><div class="aiw rv"><div class="aib"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(220,20,60,.25)" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="abadge"><strong>2+</strong><small>Años</small></div></div><div class="rv rv-d2"><div class="sl">Sobre Mí</div><h2 class="st shimmer">Pasión por el<br>diseño minimal</h2><p class="atxt">Diseñador y desarrollador enfocado en interfaces limpias y funcionales.</p><div class="tags"><span class="tag">UI/UX</span><span class="tag">React</span><span class="tag">Three.js</span><span class="tag">Django</span><span class="tag">FastAPI</span><span class="tag">GSAP</span><span class="tag">TypeScript</span><span class="tag">Figma</span></div></div></div></section>
 
-    <section class="projs" id="projects"><div class="sh rv"><div class="sl">Proyectos</div><h2 class="st shimmer">Trabajos<br>Seleccionados</h2><p class="ss">Cada demo es un video guardado localmente. Pasá el mouse para reproducir o tocá el botón rojo para verla en grande.</p></div>
+    <section class="projs" id="projects"><div class="sh rv"><div class="sl">Proyectos</div><h2 class="st shimmer">Trabajos<br>Seleccionados</h2><p class="ss">Tocá un trabajo para verlo en vivo. Los publicados se abren en una pestaña nueva.</p></div>
     <div class="pgrid" id="pgrid">
-        <div class="glass pcard rv rv-d1" data-p="planb">
+        <div class="glass pcard rv rv-d1" data-url="https://oxcy137.github.io/barberia-web/" data-p="planb">
             <div class="glass-inner">
                 <div class="pprev" data-open="planb">
                     <div class="pthumb" style="background-image:linear-gradient(135deg,rgba(220,20,60,.18),rgba(139,10,30,.05)),radial-gradient(circle at 30% 40%,rgba(255,23,68,.2),transparent 60%)"></div>
                     <div class="ptags"><span class="ptag">React</span><span class="ptag">Three.js</span><span class="ptag">GSAP</span></div>
                     <span class="pnum">01</span>
-                    <div class="pplay"><div class="pplay-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div>
-                    <span class="pvid-badge">● Demo</span>
+                    <div class="pplay"><div class="pplay-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div></div>
                 </div>
                 <div class="pbody">
                     <div class="pcat">Web · 3D</div>
@@ -582,20 +574,18 @@
                     <p class="pdesc">Landing page para barbería con barbero 3D interactivo y scroll cinematográfico.</p>
                     <div class="ptech"><span>React</span><span>Three.js</span><span>GSAP</span></div>
                     <div class="pfoot">
-                        <a class="plink" data-open="planb">Ver Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-                        <button class="pv-upload" data-attach="planb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Demo</button>
+                        <a class="plink" data-open="planb">Ver Proyecto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="glass pcard rv rv-d2" data-p="zenflow">
+        <div class="glass pcard rv rv-d2" data-url="https://oxcy137.github.io/zenflow/" data-p="zenflow">
             <div class="glass-inner">
                 <div class="pprev" data-open="zenflow">
                     <div class="pthumb" style="background-image:linear-gradient(135deg,rgba(220,20,60,.16),rgba(139,10,30,.04)),radial-gradient(circle at 70% 30%,rgba(255,23,68,.18),transparent 60%)"></div>
                     <div class="ptags"><span class="ptag">React</span><span class="ptag">Animación</span></div>
                     <span class="pnum">02</span>
-                    <div class="pplay"><div class="pplay-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div>
-                    <span class="pvid-badge">● Demo</span>
+                    <div class="pplay"><div class="pplay-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div></div>
                 </div>
                 <div class="pbody">
                     <div class="pcat">App · Bienestar</div>
@@ -603,20 +593,18 @@
                     <p class="pdesc">Meditación guiada con interfaces zen, respiración animada y estados de ánimo.</p>
                     <div class="ptech"><span>React</span><span>GSAP</span><span>UI</span></div>
                     <div class="pfoot">
-                        <a class="plink" data-open="zenflow">Ver Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-                        <button class="pv-upload" data-attach="zenflow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Demo</button>
+                        <a class="plink" data-open="zenflow">Ver Proyecto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="glass pcard rv rv-d3" data-p="geardx">
+        <div class="glass pcard rv rv-d3" data-url="https://oxcy137.github.io/geardx/" data-p="geardx">
             <div class="glass-inner">
                 <div class="pprev" data-open="geardx">
                     <div class="pthumb" style="background-image:linear-gradient(135deg,rgba(220,20,60,.17),rgba(139,10,30,.04)),radial-gradient(circle at 40% 60%,rgba(255,23,68,.16),transparent 55%)"></div>
                     <div class="ptags"><span class="ptag">React</span><span class="ptag">Three.js</span><span class="ptag">CRUD</span></div>
                     <span class="pnum">03</span>
-                    <div class="pplay"><div class="pplay-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div>
-                    <span class="pvid-badge">● Demo</span>
+                    <div class="pplay"><div class="pplay-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div></div>
                 </div>
                 <div class="pbody">
                     <div class="pcat">App · Dashboard</div>
@@ -624,20 +612,18 @@
                     <p class="pdesc">Gestión integral y visualización 3D para talleres mecánicos.</p>
                     <div class="ptech"><span>React</span><span>Three.js</span><span>CRUD</span></div>
                     <div class="pfoot">
-                        <a class="plink" data-open="geardx">Ver Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-                        <button class="pv-upload" data-attach="geardx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Demo</button>
+                        <a class="plink" data-open="geardx">Ver Proyecto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="glass pcard rv rv-d1" data-p="inkflow">
+        <div class="glass pcard rv rv-d1" data-url="https://oxcy137.github.io/inkflow/" data-p="inkflow">
             <div class="glass-inner">
                 <div class="pprev" data-open="inkflow">
                     <div class="pthumb" style="background-image:linear-gradient(135deg,rgba(220,20,60,.15),rgba(139,10,30,.03)),radial-gradient(circle at 60% 35%,rgba(255,23,68,.17),transparent 60%)"></div>
                     <div class="ptags"><span class="ptag">Django</span><span class="ptag">React</span><span class="ptag">Full Stack</span></div>
                     <span class="pnum">04</span>
-                    <div class="pplay"><div class="pplay-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div>
-                    <span class="pvid-badge">● Demo</span>
+                    <div class="pplay"><div class="pplay-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div></div>
                 </div>
                 <div class="pbody">
                     <div class="pcat">Plataforma · Full Stack</div>
@@ -645,8 +631,7 @@
                     <p class="pdesc">Plataforma de estudio de tatuajes con reserva de turnos y gestión de artistas.</p>
                     <div class="ptech"><span>Django</span><span>DRF</span><span>React</span><span>JWT</span></div>
                     <div class="pfoot">
-                        <a class="plink" data-open="inkflow">Ver Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-                        <button class="pv-upload" data-attach="inkflow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Demo</button>
+                        <a class="plink" data-open="inkflow">Ver Proyecto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
                     </div>
                 </div>
             </div>
@@ -657,8 +642,7 @@
                     <div class="pthumb" style="background-image:linear-gradient(135deg,rgba(220,20,60,.16),rgba(139,10,30,.04)),radial-gradient(circle at 35% 50%,rgba(255,23,68,.15),transparent 60%)"></div>
                     <div class="ptags"><span class="ptag">FastAPI</span><span class="ptag">React Native</span></div>
                     <span class="pnum">05</span>
-                    <div class="pplay"><div class="pplay-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div>
-                    <span class="pvid-badge">● Demo</span>
+                    <div class="pplay"><div class="pplay-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div></div>
                 </div>
                 <div class="pbody">
                     <div class="pcat">App · Mobile</div>
@@ -666,8 +650,7 @@
                     <p class="pdesc">Escanéa productos, detectá ingredientes y verificá disruptores hormonales.</p>
                     <div class="ptech"><span>FastAPI</span><span>React Native</span><span>SQLite</span></div>
                     <div class="pfoot">
-                        <a class="plink" data-open="scanner">Ver Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-                        <button class="pv-upload" data-attach="scanner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Demo</button>
+                        <a class="plink" data-open="scanner">Ver Proyecto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
                     </div>
                 </div>
             </div>
@@ -678,8 +661,7 @@
                     <div class="pthumb" style="background-image:linear-gradient(135deg,rgba(220,20,60,.18),rgba(139,10,30,.05)),radial-gradient(circle at 65% 55%,rgba(255,23,68,.18),transparent 55%)"></div>
                     <div class="ptags"><span class="ptag">HTML</span><span class="ptag">CSS</span><span class="ptag">Concepto</span></div>
                     <span class="pnum">06</span>
-                    <div class="pplay"><div class="pplay-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div>
-                    <span class="pvid-badge">● Demo</span>
+                    <div class="pplay"><div class="pplay-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div></div>
                 </div>
                 <div class="pbody">
                     <div class="pcat">Concepto · AI OS</div>
@@ -687,8 +669,7 @@
                     <p class="pdesc">Sistema operativo conceptual con estética AI inmersiva y vistas 3D.</p>
                     <div class="ptech"><span>HTML/CSS</span><span>JS</span><span>3D</span></div>
                     <div class="pfoot">
-                        <a class="plink" data-open="spider">Ver Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-                        <button class="pv-upload" data-attach="spider"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Demo</button>
+                        <a class="plink" data-open="spider">Ver Proyecto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
                     </div>
                 </div>
             </div>
@@ -699,8 +680,7 @@
                     <div class="pthumb" style="background-image:linear-gradient(135deg,rgba(220,20,60,.15),rgba(139,10,30,.04)),radial-gradient(circle at 45% 40%,rgba(255,23,68,.16),transparent 60%)"></div>
                     <div class="ptags"><span class="ptag">HTML</span><span class="ptag">Concepto</span></div>
                     <span class="pnum">07</span>
-                    <div class="pplay"><div class="pplay-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div>
-                    <span class="pvid-badge">● Demo</span>
+                    <div class="pplay"><div class="pplay-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div></div>
                 </div>
                 <div class="pbody">
                     <div class="pcat">Concepto · OS</div>
@@ -708,8 +688,7 @@
                     <p class="pdesc">Sistema operativo conceptual con atmósfera Gotham y diseño inmersivo.</p>
                     <div class="ptech"><span>HTML/CSS</span><span>JS</span></div>
                     <div class="pfoot">
-                        <a class="plink" data-open="gotham">Ver Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-                        <button class="pv-upload" data-attach="gotham"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Demo</button>
+                        <a class="plink" data-open="gotham">Ver Proyecto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
                     </div>
                 </div>
             </div>
@@ -720,8 +699,7 @@
                     <div class="pthumb" style="background-image:linear-gradient(135deg,rgba(220,20,60,.14),rgba(139,10,30,.04)),radial-gradient(circle at 55% 45%,rgba(255,23,68,.16),transparent 60%)"></div>
                     <div class="ptags"><span class="ptag">Godot</span><span class="ptag">3D</span></div>
                     <span class="pnum">08</span>
-                    <div class="pplay"><div class="pplay-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div>
-                    <span class="pvid-badge">● Demo</span>
+                    <div class="pplay"><div class="pplay-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div></div>
                 </div>
                 <div class="pbody">
                     <div class="pcat">Juego · 3D</div>
@@ -729,8 +707,7 @@
                     <p class="pdesc">Videojuego 3D explorable construido en Godot con control de cámara propia.</p>
                     <div class="ptech"><span>Godot</span><span>GDScript</span><span>3D</span></div>
                     <div class="pfoot">
-                        <a class="plink" data-open="lumi">Ver Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-                        <button class="pv-upload" data-attach="lumi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Demo</button>
+                        <a class="plink" data-open="lumi">Ver Proyecto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
                     </div>
                 </div>
             </div>
@@ -777,7 +754,7 @@ let mO=false;
 function setM(v){mO=typeof v==='boolean'?v:!mO;rw.classList.toggle('open',mO);hb.classList.toggle('open',mO);mb.classList.toggle('show',mO)}
 hb.addEventListener('click',e=>{e.stopPropagation();setM()});
 mb.addEventListener('click',()=>setM(false));
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){setM(false);$('#quizModal').classList.remove('show');closeV()}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){setM(false);$('#quizModal').classList.remove('show');closeP()}});
 
 // Reveal
 const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')})},{threshold:.1,rootMargin:'0px 0px -30px 0px',root:page});
@@ -815,55 +792,39 @@ $('#vidDel').addEventListener('click',()=>{const s=bv.src;bv.pause();bv.removeAt
 vo.addEventListener('click',()=>{oL=(oL+1)%oLs.length;uO();vo.textContent=['○','◔','◑','◕'][oL]});
 new MutationObserver(()=>{if(vb.classList.contains('on'))uO()}).observe(root,{attributes:true,attributeFilter:['data-theme']});
 
-// ═══ PROJECT DEMO VIDEOS (local-only, anti-scraper) ═══
-const vmodal=$('#vmodal'),vmVideo=$('#vmVideo'),vmEmpty=$('#vmEmpty'),vmTitle=$('#vmTitle'),vmSub=$('#vmSub'),vmUpload=$('#vmUpload'),vmClose=$('#vmClose');
-const pVideos={};
-let curP=null;
+// ═══ PROJECT DETAILS (open real work) ═══
+const vmodal=$('#vmodal'),pmTitle=$('#vmTitle'),pmSub=$('#vmSub'),pmDesc=$('#pmDesc'),pmTech=$('#pmTech'),pmLink=$('#pmLink'),pmSoon=$('#pmSoon'),pmClose=$('#vmClose');
 
-function closeV(){vmodal.classList.remove('show');vmVideo.pause();vmVideo.removeAttribute('src');vmVideo.load();vmEmpty.style.display='flex';vmVideo.style.display='none';curP=null}
-vmClose.addEventListener('click',closeV);
-vmodal.addEventListener('click',e=>{if(e.target===vmodal)closeV()});
+function closeP(){vmodal.classList.remove('show')}
+pmClose.addEventListener('click',closeP);
+vmodal.addEventListener('click',e=>{if(e.target===vmodal)closeP()});
 
-function openV(id){
+function openP(id){
     const card=document.querySelector(`.pcard[data-p="${id}"]`);
     const title=card?.querySelector('.ptitle')?.textContent||'Proyecto';
-    const cat=card?.querySelector('.pcat')?.textContent||'Demo';
-    vmTitle.textContent=title;
-    vmSub.textContent=cat;
-    curP=id;
-    if(pVideos[id]){
-        vmVideo.src=pVideos[id];
-        vmEmpty.style.display='none';
-        vmVideo.style.display='block';
-        vmVideo.play().catch(()=>{});
+    const cat=card?.querySelector('.pcat')?.textContent||'Trabajo';
+    const desc=card?.querySelector('.pdesc')?.textContent||'';
+    const tech=[...(card?.querySelectorAll('.ptech span')||[])].map(t=>t.textContent);
+    const url=card?.dataset.url||'';
+    pmTitle.textContent=title;
+    pmSub.textContent=cat;
+    pmDesc.textContent=desc;
+    pmTech.innerHTML=tech.map(t=>`<span>${t}</span>`).join('');
+    if(url){
+        pmLink.href=url;
+        pmLink.style.display='inline-flex';
+        pmSoon.style.display='none';
     }else{
-        vmEmpty.style.display='flex';
-        vmVideo.style.display='none';
+        pmLink.removeAttribute('href');
+        pmLink.style.display='none';
+        pmSoon.style.display='flex';
     }
     vmodal.classList.add('show');
 }
 
-vmUpload.addEventListener('click',()=>{
-    if(!curP)return;
-    const card=document.querySelector(`.pcard[data-p="${curP}"]`);
-    const inp=document.createElement('input');
-    inp.type='file';inp.accept='video/*';
-    inp.onchange=()=>{const f=inp.files[0];if(!f)return;pVideos[curP]=URL.createObjectURL(f);attachDone(card,f.name);vmVideo.src=pVideos[curP];vmEmpty.style.display='none';vmVideo.style.display='block';vmVideo.play().catch(()=>{})};
-    inp.click();
-});
-
-function attachDone(card,name){
-    card.classList.add('has-video');
-    const btn=card.querySelector('.pv-upload');
-    if(btn){btn.classList.add('done');btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Demo ✓'}
-    const badge=card.querySelector('.pvid-badge');
-    if(badge)badge.textContent='● '+name.slice(0,14)+(name.length>14?'…':'');
-}
-
 $$('.pcard').forEach(card=>{
     const id=card.dataset.p;
-    card.querySelectorAll('[data-open]').forEach(el=>el.addEventListener('click',()=>openV(id)));
-    card.querySelector('[data-attach]').addEventListener('click',e=>{e.stopPropagation();const inp=document.createElement('input');inp.type='file';inp.accept='video/*';inp.onchange=()=>{const f=inp.files[0];if(!f)return;pVideos[id]=URL.createObjectURL(f);attachDone(card,f.name)};inp.click()});
+    card.querySelectorAll('[data-open]').forEach(el=>el.addEventListener('click',()=>openP(id)));
 });
 
 // Quiz
@@ -900,7 +861,7 @@ function genRes(){
         try{localStorage.setItem('uxfolio_ok','1')}catch(e){}
     }
     function go(){
-        var v=document.getElementById('agatePass').value.trim();
+        var v=document.getElementById('agatePass').value.trim().toLowerCase();
         if(!v)return;
         if(dh(v)===PASS_HASH){unlock()}
         else{
