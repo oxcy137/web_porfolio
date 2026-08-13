@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://oxcy137.github.io/web_porfolio/sitemap.xml
