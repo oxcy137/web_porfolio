@@ -170,6 +170,19 @@
         .nav-link.active{color:var(--t1);background:var(--g1);box-shadow:0 2px 8px rgba(220,20,60,.06)}
         .nav-link.active::after{transform:scaleX(1)}
 
+        /* Mobile nav drawer (nav-pill hidden <900px) */
+        .mnav-btn{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:660;display:none;align-items:center;gap:7px;padding:9px 18px;border-radius:50px;background:var(--g2);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--b2);box-shadow:0 4px 16px rgba(220,20,60,.05);cursor:pointer;color:var(--t1);font-size:12px;font-weight:500;letter-spacing:.3px;transition:all .3s}
+        .mnav-btn svg{width:14px;height:14px;color:var(--cr);transition:all .3s}
+        .mnav-btn:hover{color:var(--cr);box-shadow:0 6px 20px rgba(220,20,60,.1)}
+        .mnav-btn.open svg{transform:rotate(90deg)}
+        #mdraw{position:fixed;top:0;left:0;right:0;z-index:655;display:flex;flex-direction:column;gap:2px;padding:74px 18px 18px;background:var(--g1);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--b1);box-shadow:0 12px 40px rgba(0,0,0,.08);transform:translateY(-110%);transition:transform .45s cubic-bezier(.22,1,.36,1);visibility:hidden}
+        #mdraw.show{transform:translateY(0);visibility:visible}
+        #mdraw a{font-size:15px;font-weight:500;letter-spacing:.3px;color:var(--t3);text-decoration:none;padding:12px 14px;border-radius:12px;transition:all .25s;position:relative}
+        #mdraw a:hover,#mdraw a.active{color:var(--t1);background:rgba(220,20,60,.07)}
+        #mdraw a::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:0;border-radius:3px;background:var(--cr);transition:height .25s}
+        #mdraw a.active::before{height:18px}
+        @media(max-width:900px){.mnav-btn{display:flex}}
+
         /* Social icons - floating individually */
         .top-socials{position:fixed;top:14px;right:24px;z-index:610;display:flex;align-items:center;gap:8px}
         .soc-icon{
@@ -534,6 +547,17 @@
     </nav>
 </header>
 
+<!-- MOBILE NAV DRAWER -->
+<button class="mnav-btn" id="mnavBtn" aria-label="Abrir menú" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg><span>Secciones</span></button>
+<nav id="mdraw" aria-label="Navegación móvil">
+    <a class="mnav-l" href="#hero" data-s="hero">Inicio</a>
+    <a class="mnav-l" href="#about" data-s="about">Sobre Mí</a>
+    <a class="mnav-l" href="#projects" data-s="projects">Proyectos</a>
+    <a class="mnav-l" href="#services" data-s="services">Servicios</a>
+    <a class="mnav-l" href="#process" data-s="process">Proceso</a>
+    <a class="mnav-l" href="#contact" data-s="contact">Contacto</a>
+</nav>
+
 <!-- SOCIAL ICONS - floating individually, fixed top right -->
 <div class="top-socials" id="topSocials">
     <a href="#" target="_blank" class="soc-icon" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
@@ -793,12 +817,17 @@ page.addEventListener('scroll',()=>{
     $('#btt').classList.toggle('show',page.scrollTop>500);
     let cur='hero';
     $$('section[id]').forEach(s=>{if(page.scrollTop>=s.offsetTop-300)cur=s.id});
-    $$('.nav-link').forEach(l=>l.classList.toggle('active',l.dataset.s===cur));
+    $$('.nav-link,.mnav-l').forEach(l=>l.classList.toggle('active',l.dataset.s===cur));
 },{passive:true});
 
 $('#btt').addEventListener('click',()=>page.scrollTo({top:0,behavior:'smooth'}));
 
 $$('.nav-link').forEach(l=>l.addEventListener('click',e=>{e.preventDefault();$(l.getAttribute('href'))?.scrollIntoView({behavior:'smooth'})}));
+
+// Mobile nav drawer
+const mnb=$('#mnavBtn'),mdw=$('#mdraw');
+mnb.addEventListener('click',e=>{e.stopPropagation();const open=mdw.classList.toggle('show');mnb.classList.toggle('open',open);mnb.setAttribute('aria-expanded',open)});
+mdw.addEventListener('click',e=>{if(e.target.classList.contains('mnav-l')){mdw.classList.remove('show');mnb.classList.remove('open');mnb.setAttribute('aria-expanded','false')}});
 
 $('#logoBtn').addEventListener('click',e=>{e.preventDefault();page.scrollTo({top:0,behavior:'smooth'})});
 
@@ -808,7 +837,7 @@ let mO=false;
 function setM(v){mO=typeof v==='boolean'?v:!mO;rw.classList.toggle('open',mO);hb.classList.toggle('open',mO);mb.classList.toggle('show',mO)}
 hb.addEventListener('click',e=>{e.stopPropagation();setM()});
 mb.addEventListener('click',()=>setM(false));
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){setM(false);$('#quizModal').classList.remove('show');closeP()}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){setM(false);$('#quizModal').classList.remove('show');mdw.classList.remove('show');if(mnb)mnb.classList.remove('open');closeP()}});
 
 // Reveal
 const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')})},{threshold:.1,rootMargin:'0px 0px -30px 0px',root:page});
@@ -889,7 +918,7 @@ let qa={};
 $('#quizBtn').addEventListener('click',e=>{e.stopPropagation();setM(false);setTimeout(()=>{resetQuiz();qm.classList.add('show')},300)});
 $('#quizClose').addEventListener('click',()=>qm.classList.remove('show'));
 qm.addEventListener('click',e=>{if(e.target===qm)qm.classList.remove('show')});
-$('#resBtn').addEventListener('click',()=>{qm.classList.remove('show');setTimeout(()=>$('#contact').scrollIntoView({behavior:'smooth'}),300)});
+$('#resBtn').addEventListener('click',()=>{const msg='Hola! Hice tu test de diseño y mi resultado fue: '+($('#resText').textContent||'').trim();qm.classList.remove('show');window.open('https://wa.me/543516196111?text='+encodeURIComponent(msg),'_blank');toast('¡Te llevo a WhatsApp con tu resultado!');});
 
 function resetQuiz(){qa={};$$('.quiz-step').forEach(s=>s.classList.remove('active'));$('[data-step="1"]').classList.add('active');$$('.quiz-opt').forEach(o=>o.classList.remove('selected'));$$('.qnext').forEach(b=>b.disabled=true);qb.style.width='25%'}
 
