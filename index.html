@@ -951,7 +951,6 @@ function genRes(){
         document.getElementById('agate').classList.add('hide');
         var pl=document.getElementById('preloader');
         if(pl)pl.style.display='none';
-        try{localStorage.setItem('uxfolio_ok','1')}catch(e){}
     }
     function go(){
         var v=document.getElementById('agatePass').value.trim().toLowerCase();
@@ -965,16 +964,11 @@ function genRes(){
             setTimeout(function(){e.style.display='none'},1800);
         }
     }
-    var saved=false;
-    try{saved=localStorage.getItem('uxfolio_ok')==='1'}catch(e){}
-    if(saved){unlock()}
-    else{
-        document.getElementById('agateBtn').addEventListener('click',go);
-        document.getElementById('agatePass').addEventListener('keydown',function(ev){
-            if(ev.key==='Enter'||ev.key==='Go')go();
-        });
-        setTimeout(function(){document.getElementById('agatePass').focus()},350);
-    }
+    document.getElementById('agateBtn').addEventListener('click',go);
+    document.getElementById('agatePass').addEventListener('keydown',function(ev){
+        if(ev.key==='Enter'||ev.key==='Go')go();
+    });
+    setTimeout(function(){document.getElementById('agatePass').focus()},350);
 })();
 </script>
 
