@@ -495,8 +495,15 @@
         .agate-sub{font-size:13.5px;color:var(--t3);margin:8px 0 22px;line-height:1.5}
         .agate-field{position:relative;margin-bottom:16px}
         .agate-field input{width:100%;padding:14px 16px 14px 46px;border-radius:14px;border:1px solid var(--b1);background:var(--w1);color:var(--t1);font-size:14px;outline:none;transition:border-color .25s,box-shadow .25s;font-family:'Inter',sans-serif}
-        .agate-field input:focus{border-color:var(--cr);box-shadow:0 0 0 4px rgba(220,20,60,.1)}
         .agate-field svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:18px;height:18px;stroke:var(--t3);fill:none;stroke-width:2;stroke-linecap:round}
+        .agate-field input:focus{border-color:var(--cr);box-shadow:0 0 0 4px rgba(220,20,60,.1)}
+        .agate-field input{padding-right:44px}
+        .agate-eye{position:absolute;right:10px;top:50%;transform:translateY(-50%);width:34px;height:34px;display:flex;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;border-radius:10px;color:var(--t3);transition:color .2s,background .2s}
+        .agate-eye:hover{color:var(--t1);background:var(--b1)}
+        .agate-eye svg{position:static;transform:none;width:19px;height:19px;stroke:currentColor}
+        .agate-eye svg.off{display:none}
+        .agate-eye.visible svg.on{display:none}
+        .agate-eye.visible svg.off{display:block}
         .agate-btn{width:100%;padding:14px;border:none;border-radius:14px;background:linear-gradient(135deg,var(--cr),var(--crdp));color:#fff;font-size:14.5px;font-weight:700;font-family:'Inter',sans-serif;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 10px 24px rgba(220,20,60,.28)}
         .agate-btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(220,20,60,.38)}
         .agate-btn:active{transform:translateY(0)}
@@ -517,6 +524,7 @@
             <div class="agate-field">
                 <svg viewBox="0 0 24 24"><path d="M12 17a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/><path d="M2.06 12.35a1 1 0 0 1 0-.7C4.03 7.82 7.85 5 12 5c4.15 0 7.97 2.82 9.94 6.65a1 1 0 0 1 0 .7C19.97 16.18 16.15 19 12 19c-4.15 0-7.97-2.82-9.94-6.65z"/></svg>
                 <input type="password" id="agatePass" placeholder="Contraseña" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="go" aria-label="Contraseña de acceso">
+                <button type="button" class="agate-eye" id="agateEye" aria-label="Mostrar contraseña" aria-pressed="false"><svg class="on" viewBox="0 0 24 24"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg><svg class="off" viewBox="0 0 24 24"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg></button>
             </div>
             <button class="agate-btn" id="agateBtn">Entrar</button>
             <div class="agate-err" id="agateErr">Contraseña incorrecta</div>
@@ -850,6 +858,14 @@ async function go(){
 }
 document.getElementById('agateBtn').addEventListener('click',go);
 document.getElementById('agatePass').addEventListener('keydown',function(ev){if(ev.key==='Enter'||ev.key==='Go')go()});
+const agateEye=document.getElementById('agateEye');
+agateEye.addEventListener('click',function(){
+    const pw=document.getElementById('agatePass'),on=pw.type==='password';
+    pw.type=on?'text':'password';
+    agateEye.classList.toggle('visible',on);
+    agateEye.setAttribute('aria-label',on?'Ocultar contraseña':'Mostrar contraseña');
+    agateEye.setAttribute('aria-pressed',on?'true':'false');
+});
 setTimeout(function(){document.getElementById('agatePass').focus()},350);
 
 // ═══ INIT (corre solo tras descifrar el contenido) ═══
